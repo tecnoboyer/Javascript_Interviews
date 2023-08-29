@@ -1,0 +1,4 @@
+To verify if a number is prime or not, the below steps are followed
+	A. Require IO numbers.
+	B. Validate the input is a number.
+	C. Create a loop with the % module operator that is verifaying the desivility in behind interval that do not include the number itself.
