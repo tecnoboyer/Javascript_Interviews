@@ -39,7 +39,7 @@ function studentMsg(totalScores, studentScore) {
     let studenGrade= getGrade(studentScore);
     let av= getAverage(totalScores);
     if(studenGrade==='F'){
-        return ( `Class average: ${av}, Your grade: ${studenGrade}. You reprove the course.`)
+        return ( `Class average: ${av}, Your grade: ${studenGrade}. You failed the course.`)
     }else{
         return ( `Class average: ${av}, Your grade: ${studenGrade}.You passed the course. `)
     }
