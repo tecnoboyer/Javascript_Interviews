@@ -12,7 +12,7 @@ function sym(...args) {
       } else {
         frequency[element] = 1;
       }
-    });
+    });  
   });
 
   // Collect elements that appear an odd number of times
