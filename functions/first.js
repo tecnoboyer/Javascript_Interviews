@@ -8,4 +8,15 @@ function addOrSubtract(num) {
         return num - 3;
     }
 }
-console.log(addOrSubtract(5)); // 12
+var addOrSubtract2 = function (num) {
+    return num < 10 ? num + 7 : num - 3;
+};
+// console.log(addOrSubtract(5)); // 12
+console.log(addOrSubtract(15)); // 12
+// ******* exerccise 2 ********
+// Write a function, named multiply, that takes two parameters 
+// and returns their product.
+function multiply(a, b) {
+    return a * b;
+}
+console.log(multiply(4, 5)); // 20
