@@ -20,7 +20,26 @@ const addOrSubtract2 = (num: number): number => {
 // Write a function, named multiply, that takes two parameters 
 // and returns their product.
 
-function multiply(a: number, b: number): number {
-    return a * b;
-}   
-console.log(multiply(4, 5)); // 20
+// function multiply(a: number, b: number): number {
+//     return a * b;
+// }   
+// console.log(multiply(4, 5)); // 20
+
+
+// ******* exerccise 3 ********
+// Write a function, named capitalize, that takes a string 
+// as an parameter and returns a new string with the first 
+// letter capitalized.
+// function capitalize(str: string): string {
+//     if (str.length === 0) return str;   
+//     return str[0].toUpperCase() + str.slice(1);
+// }
+// console.log(capitalize("hello")); // "Hello"
+
+const capitalize = (word:string):string => {
+  if ( word.length >1){
+    return word[0].toUpperCase() + word.slice (1);
+  }
+  else return word;
+}
+console.log(capitalize("hello")); // "Hello"
