@@ -11,7 +11,7 @@ function addOrSubtract(num: number): number {
 
 const addOrSubtract2 = (num: number): number => {
     return num < 10 ? num + 7 : num - 3;
-}
+};
 
 // console.log(addOrSubtract(5)); // 12
 
