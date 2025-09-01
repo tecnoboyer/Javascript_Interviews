@@ -11,5 +11,5 @@
 </html>
 
 <script>
-  // JavaScript code goes here
+console.log("Hello World")
 </script>
