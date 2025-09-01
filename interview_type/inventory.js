@@ -7,25 +7,24 @@
 // // item.
 
 // Function definition (this is correct)
-function updateInventory(arr1, arr2) {
-    arr2.forEach((item) => {
+function updateInventory(curInv, newInv) {
+    newInv.forEach((item) => {
         let found = false;
         
-        for (let i = 0; i < arr1.length; i++) {
-            if (item[1] === arr1[i][1]) {
-                arr1[i][0] += item[0];
+        for (let i = 0; i < curInv.length; i++) {
+            if (item[1] === curInv[i][1]) {
+                curInv[i][0] += item[0];
                 found = true;
                 break;
             }
         }
         if (!found) {
-            arr1.push(item);
+            curInv.push(item);
         }
     });
-    // Add the sort function as discussed previously for a clean output
-    // arr1.sort((a, b) => a[1].localeCompare(b[1])); 
 
-    return arr1;
+
+    return curInv;
 }
 
 // Example inventory lists (these are the correct starting values)
