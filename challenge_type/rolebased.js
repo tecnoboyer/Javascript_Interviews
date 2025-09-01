@@ -9,3 +9,7 @@
     <div id="game"></div>
   </body>
 </html>
+
+<script>
+  // JavaScript code goes here
+</script>
