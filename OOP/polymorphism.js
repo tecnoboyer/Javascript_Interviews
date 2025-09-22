@@ -11,23 +11,24 @@ class Animal {
 }
 
 class Dog extends Animal {
-    speak(){
-        console.log("Dog barks");
+    speak(intensity){
+        console.log(`Dogs meow ${intensity}`);
     }
 }
 
 class Cat extends Animal{
-    speak(){
-        console.log("Cats meow");
+    speak(intensity){
+        console.log(`Cats meow ${intensity}`);
     }
 }
 
-const doc = new Dog();
+const dog = new Dog();
 const cat = new Cat();
 
-function makeAnimalSpeak(animal){
-    animal.speak();
+function makeAnimalSpeak(animal,intensity ){
+    animal.speak(intensity);
 }
 
-makeAnimalSpeak(doc);
+makeAnimalSpeak(dog,'loud'); //Here, makeAnimalSpeak works with any object that has a speak method. This is runtime polymorphism—the same method name behaves differently depending on the object
+
 
