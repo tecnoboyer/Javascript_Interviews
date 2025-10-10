@@ -36,9 +36,19 @@ function fetchSettings() {
 //     console.log("❌ One of the promises failed:", error);
 //   });
 
-///Get results for all, whether they succeed or fail.
-  Promise.allSettled([fetchUser(), fetchPosts(), fetchSettings()])
-  .then(results => {
-    console.log("📊 All settled:");
-    console.log(results);
+// ///Get results for all, whether they succeed or fail.
+//   Promise.allSettled([fetchUser(), fetchPosts(), fetchSettings()])
+//   .then(results => {
+//     console.log("📊 All settled:");
+//     console.log(results);
+//   });
+
+
+/// Ojo es importante porque retorna el primero que es exitoso
+  Promise.any([fetchSettings(), fetchUser(), fetchPosts()])
+  .then(value => {
+    console.log("🌟 First success:", value);
+  })
+  .catch(error => {
+    console.log("💥 All failed:", error.errors);
   });
