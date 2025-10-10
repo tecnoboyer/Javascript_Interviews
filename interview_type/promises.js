@@ -28,10 +28,17 @@ function fetchSettings() {
 //     .catch(error => {console.log(error)});
 
 /////Fetch everything in parallel — if any fails, the whole thing fails.
-Promise.all([fetchUser(), fetchPosts(), fetchSettings()])
-  .then(values => {
-    console.log("✅ All loaded:", values);
-  })
-  .catch(error => {
-    console.log("❌ One of the promises failed:", error);
+// Promise.all([fetchUser(), fetchPosts(), fetchSettings()])
+//   .then(values => {
+//     console.log("✅ All loaded:", values);
+//   })
+//   .catch(error => {
+//     console.log("❌ One of the promises failed:", error);
+//   });
+
+///Get results for all, whether they succeed or fail.
+  Promise.allSettled([fetchUser(), fetchPosts(), fetchSettings()])
+  .then(results => {
+    console.log("📊 All settled:");
+    console.log(results);
   });
