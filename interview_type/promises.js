@@ -15,14 +15,23 @@ function fetchSettings() {
     setTimeout(() => reject("⚠️ Failed to load settings"), 900);
   });
 }
-console.log(fetchPosts()); // Promise { <pending> } meaning that the promise is still in progress
-// by the time the log is executed, the promise has not yet resolved or rejected.
+// console.log(fetchPosts()); // Promise { <pending> } meaning that the promise is still in progress
+// // by the time the log is executed, the promise has not yet resolved or rejected.
 
-fetchPosts().then(value => {
-  console.log(value);
-});
-fetchSettings()
-    .then(value => {
-        console.log(value);
-    })
-    .catch(error => {console.log(error)});
+// fetchPosts().then(value => {
+//   console.log(value);
+// });
+// fetchSettings()
+//     .then(value => {
+//         console.log(value);
+//     })
+//     .catch(error => {console.log(error)});
+
+/////Fetch everything in parallel — if any fails, the whole thing fails.
+Promise.all([fetchUser(), fetchPosts(), fetchSettings()])
+  .then(values => {
+    console.log("✅ All loaded:", values);
+  })
+  .catch(error => {
+    console.log("❌ One of the promises failed:", error);
+  });
