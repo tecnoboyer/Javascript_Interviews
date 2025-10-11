@@ -45,10 +45,16 @@ function fetchSettings() {
 
 
 /// Ojo es importante porque retorna el primero que es exitoso
-  Promise.any([fetchSettings(), fetchUser(), fetchPosts()])
-  .then(value => {
-    console.log("🌟 First success:", value);
-  })
-  .catch(error => {
-    console.log("💥 All failed:", error.errors);
-  });
+//   Promise.any([fetchSettings(), fetchUser(), fetchPosts()])
+//   .then(value => {
+//     console.log("🌟 First success:", value);
+//   })
+//   .catch(error => {
+//     console.log("💥 All failed:", error.errors);
+//   });
+
+
+
+fetchSettings().catch(err => {
+  console.trace("Trace error:", err);
+});
