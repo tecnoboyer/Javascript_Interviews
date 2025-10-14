@@ -6,7 +6,12 @@ async function task() {
   await Promise.resolve(); //it pause the execution fo task here 
   console.log("3️⃣ After await");
 
-  Promise.resolve().then(() => console.log("4️⃣ Promise after await"));
+  Promise.resolve().then(() =>{
+    console.trace() 
+    console.log("4️⃣ Promise after await")
+  }
+    
+  );
 }
 
 console.log("5️⃣ Before calling task");
