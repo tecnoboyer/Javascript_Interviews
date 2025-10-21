@@ -5,4 +5,13 @@ let addfunc = function(x) {
     return innerfunc;
 }   
 let add5 = addfunc(5)(3);
-console.log(add5);
+
+let subtractfunc = function(a) {
+    let innerSubtract = function(b) {
+        return a - b;
+    }; 
+    return innerSubtract;
+}    
+
+
+export {addfunc,subtractfunc}

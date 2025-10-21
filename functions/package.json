@@ -1,0 +1,13 @@
+{
+  "name": "functions-project",
+  "version": "1.0.0",
+  "description": "My functions examples",
+  "type": "module",                                                 
+  "main": "importingEx.js",
+  "scripts": {
+    "start": "node importingEx.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
