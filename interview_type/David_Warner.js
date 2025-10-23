@@ -63,6 +63,7 @@ function formatArticles(articles) {
             createdAt= month +' '+day+','+' '+year;
         }
 
+        //Formatting the title 
         let trimmedContent = preTitle.trim();
         let truncatedContent = trimmedContent.length > 50 
             ? trimmedContent.slice(0, 50) + "…"
