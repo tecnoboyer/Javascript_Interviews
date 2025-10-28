@@ -29,7 +29,9 @@
  */
 function cleanseUserData(rawUsers) {
 
-    console.dir(Date.now());
+    // console.log((Date.now()));
+    // console.log((new Date()));
+    // console.log((Date()));
 
 
 
@@ -42,7 +44,6 @@ function cleanseUserData(rawUsers) {
     let lastActive='';
     let isOnline =Boolean;
     lastActive= new Date();
-    console.log('lastActive'+lastActive);
 
     rawUsers_filtered.forEach((theobject)=>{
         // console.log(typeof(theobject.id));
