@@ -51,7 +51,7 @@ function cleanseUserData(rawUsers) {
 
         let id =theobject.id;
 
-        let email = theobject.email.toLowerCase().trim(' ');
+        let email = theobject.email.toLowerCase().trim();
         let fullName = "";
 
 
