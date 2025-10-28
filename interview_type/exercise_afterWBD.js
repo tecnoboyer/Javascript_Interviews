@@ -28,12 +28,21 @@
  * @returns {Array<Object>} Array of cleaned, formatted user objects.
  */
 function cleanseUserData(rawUsers) {
+
+    console.dir(Date.now());
+
+
+
     let rawUsers_filtered = rawUsers.filter(theobject => {
     // Keep the object ONLY if id is NOT a number
     return typeof theobject.id !== 'number';
     });
     let cleanedArray=[];
     let preferences ={};
+    let lastActive='';
+    let isOnline =Boolean;
+    lastActive= new Date();
+    console.log('lastActive'+lastActive);
 
     rawUsers_filtered.forEach((theobject)=>{
         // console.log(typeof(theobject.id));
@@ -60,17 +69,27 @@ function cleanseUserData(rawUsers) {
             // console.dir(second);
         }
 
+        // Process the preferences
         if(!theobject.preferences || (typeof theobject.preferences === 'object' && Object.keys(theobject.preferences).length === 0) || (theobject.preferences.theme=='invalid')  ){
-            console.dir (theobject);
+            // console.dir (theobject);
             preferences = { theme: 'light', notifications: false }
         }else{
             preferences = { ...theobject.preferences,  notifications:'on' }
-           
         }
- 
+
+        console.log();
+        
+        // Process the lastActive field
+        if((!theobject.lastActive)||((new Date(Date.now())-new Date(theobject.lastActive))>900000)){
+            isOnline=false;
+        }else{
+            isOnline=true;
+        }
         // let fullName = theobject.fullName;
-        cleanedArray.push({email,fullName,preferences});
+        cleanedArray.push({email,fullName,preferences,isOnline});
     });
+
+  
 
     return cleanedArray
 
