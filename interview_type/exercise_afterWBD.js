@@ -28,11 +28,48 @@
  * @returns {Array<Object>} Array of cleaned, formatted user objects.
  */
 function cleanseUserData(rawUsers) {
+    let rawUsers_filtered = rawUsers.filter(theobject => {
+    // Keep the object ONLY if id is NOT a number
+    return typeof theobject.id !== 'number';
+    });
     let cleanedArray=[];
+    let preferences ={};
 
-    rawUsers.forEach((theobject)=>{
-        let newemail = theobject.email.toLowerCase().trim(' ');
-        cleanedArray.push(newemail);
+    rawUsers_filtered.forEach((theobject)=>{
+        // console.log(typeof(theobject.id));
+        if(typeof(theobject.id)=='number'){
+            console.log('here we are :'+ theobject.id);
+        }
+        let email = theobject.email.toLowerCase().trim(' ');
+        let fullName = "";
+
+
+        if (!theobject.fullName  ){
+            // console.log(theobject.email);
+            fullName = 'Anonymous User';
+        }else{
+            // console.log (theobject.fullName);
+            let subelemten= theobject.fullName.split(' ');
+            // console.dir(subelemten);
+            let second= [];
+            subelemten.forEach(nameSlot=>{ second.push(nameSlot.toLowerCase().charAt(0).toUpperCase()+nameSlot.toLowerCase().slice(1))});
+            fullName = second.join(' ');
+
+            // console.log(saniName);
+
+            // console.dir(second);
+        }
+
+        if(!theobject.preferences || (typeof theobject.preferences === 'object' && Object.keys(theobject.preferences).length === 0) || (theobject.preferences.theme=='invalid')  ){
+            console.dir (theobject);
+            preferences = { theme: 'light', notifications: false }
+        }else{
+            preferences = { ...theobject.preferences,  notifications:'on' }
+           
+        }
+ 
+        // let fullName = theobject.fullName;
+        cleanedArray.push({email,fullName,preferences});
     });
 
     return cleanedArray
@@ -48,4 +85,5 @@ const rawUserData = [
     { id: "u005", fullName: "test", email: "test@test.com" } // Missing lastActive (Offline)
 ];
 
+// cleanseUserData(rawUserData);
 console.dir(cleanseUserData(rawUserData), { depth: null });
