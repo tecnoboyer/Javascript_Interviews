@@ -29,16 +29,17 @@
  */
 function cleanseUserData(rawUsers) {
 
-    // console.log((Date.now()));
-    // console.log((new Date()));
-    // console.log((Date()));
 
 
 
-    let rawUsers_filtered = rawUsers.filter(theobject => {
-    // Keep the object ONLY if id is NOT a number
-    return typeof theobject.id !== 'number';
-    });
+    // let rawUsers_filtered = rawUsers.filter(theobject => {
+    // // Keep the object ONLY if id is NOT a number
+    // return typeof theobject.id === 'string';
+    // });
+
+    const rawUsers_filtered = rawUsers.filter(u => typeof u.id === 'string' && u.id.trim() !== '');
+
+
     let cleanedArray=[];
     let preferences ={};
     let lastActive='';
@@ -47,9 +48,9 @@ function cleanseUserData(rawUsers) {
 
     rawUsers_filtered.forEach((theobject)=>{
         // console.log(typeof(theobject.id));
-        if(typeof(theobject.id)=='number'){
-            console.log('here we are :'+ theobject.id);
-        }
+
+        let id =theobject.id;
+
         let email = theobject.email.toLowerCase().trim(' ');
         let fullName = "";
 
@@ -87,7 +88,7 @@ function cleanseUserData(rawUsers) {
             isOnline=true;
         }
         // let fullName = theobject.fullName;
-        cleanedArray.push({email,fullName,preferences,isOnline});
+        cleanedArray.push({id,email,fullName,preferences,isOnline});
     });
 
   
