@@ -134,7 +134,7 @@ const rawRegistrationData = [
     username: "eve_adams",
     email: "  EVE@EXAMPLE.COM  ",
     password: "validPass123",
-    firstName: "eve marie",
+    firstName: "eve marie123",
     lastName: "adams-smith",
     age: "29",
     phoneNumber: "5556667777",
@@ -182,6 +182,9 @@ function processRegistrationData(rawUsers) {
         }
         dataComing.password=password;
 
+        /// Sanitization name surname
+        element.firstName? dataComing.firstName=normalizeName(element.firstName) : "";
+        element.lastName? dataComing.lastName=normalizeName(element.lastName) : "";
 
 
         usersArray.push(dataComing);
@@ -231,6 +234,17 @@ function sanitizePhone(phone) {
 
 function normalizeWebsite(url) {
   // TODO: Ensure URL starts with http:// or https://
+}
+function normalizeName(name){
+  var clean = name.replace(/[^a-zA-Z\s]/g, "").trim();
+  var sep = clean.split(" ");
+  var unif = sep.map (substring =>{
+    return substring[0].toUpperCase()+substring.slice(1).toLowerCase()
+  })
+  const result = unif.join(' ');
+
+  return result ;
+
 }
 
 function getPasswordStrength(password) {
