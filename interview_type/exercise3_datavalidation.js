@@ -185,6 +185,7 @@ function processRegistrationData(rawUsers) {
         /// Sanitization name surname
         element.firstName? dataComing.firstName=normalizeName(element.firstName) : "";
         element.lastName? dataComing.lastName=normalizeName(element.lastName) : "";
+        element.phoneNumber? dataComing.phoneNumber=element.phoneNumber.replace(/\D/g, ""):'' ;
 
 
         usersArray.push(dataComing);
