@@ -32,4 +32,4 @@ function selectionSort(array) {
     // Only change code above this line
 }
 
-selectionSort([9,8,2,2,7]);
+selectionSort([2,8,2,2,7]);
