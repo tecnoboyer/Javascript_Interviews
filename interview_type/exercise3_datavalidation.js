@@ -167,7 +167,7 @@ function processRegistrationData(rawUsers) {
         } else {
         return false;
     }
-        dataComing.username=user;
+        
 
         // Sanitizing the email
         if(isValidEmail(element.email)){
@@ -180,14 +180,10 @@ function processRegistrationData(rawUsers) {
         }else{
             return false ;
         }
-        dataComing.password=password;
+        
 
 
 
-        /// Sanitization name surname
-        element.firstName? dataComing.firstName=normalizeName(element.firstName) : "";
-        element.lastName? dataComing.lastName=normalizeName(element.lastName) : "";
-        element.phoneNumber? dataComing.phoneNumber=element.phoneNumber.replace(/\D/g, ""):'' ;
 
         /// Normalizing website
         if(element.website){
@@ -195,6 +191,21 @@ function processRegistrationData(rawUsers) {
         }else {
           // console.log('No website: ' +element.website);
         }
+        
+        if(dataComing.age=normalizeAge(element.age)){
+          console.log('working properly');
+        }else {
+          return ;
+        }
+
+        dataComing.username=user;
+        dataComing.password=password;
+        /// Sanitization name surname
+        element.firstName? dataComing.firstName=normalizeName(element.firstName) : "";
+        element.lastName? dataComing.lastName=normalizeName(element.lastName) : "";
+        element.phoneNumber? dataComing.phoneNumber=element.phoneNumber.replace(/\D/g, ""):'' ;
+
+
 
         usersArray.push(dataComing);
 
@@ -206,7 +217,20 @@ function processRegistrationData(rawUsers) {
   return [];
 }
 
+
+
 // HELPER FUNCTIONS (You may implement these or add your own)
+
+function normalizeAge(age){
+
+  const ageAdquired = parseInt(age);
+
+  if (ageAdquired> 17 && ageAdquired < 120){
+    return ageAdquired
+  }
+
+}
+
 
 function isValidEmail(email) {
     // console.log(email);
