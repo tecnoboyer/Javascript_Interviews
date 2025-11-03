@@ -183,15 +183,18 @@ function processRegistrationData(rawUsers) {
         dataComing.password=password;
 
 
-        if(element.website){
-          normalizeWebsite(element.website);
-        }
 
         /// Sanitization name surname
         element.firstName? dataComing.firstName=normalizeName(element.firstName) : "";
         element.lastName? dataComing.lastName=normalizeName(element.lastName) : "";
         element.phoneNumber? dataComing.phoneNumber=element.phoneNumber.replace(/\D/g, ""):'' ;
 
+        /// Normalizing website
+        if(element.website){
+          dataComing.website=normalizeWebsite(element.website);
+        }else {
+          // console.log('No website: ' +element.website);
+        }
 
         usersArray.push(dataComing);
 
@@ -241,8 +244,11 @@ function sanitizePhone(phone) {
 function normalizeWebsite(url) {
   // TODO: Ensure URL starts with http:// or https://
 
-  console.log(url);
-}
+  if(url.slice(0,7)!='http://' || url.slice(0,8)!='https://' ){
+    return 'https://'+url ;
+
+}}
+
 function normalizeName(name){
   var clean = name.replace(/[^a-zA-Z\s]/g, "").trim();
   var sep = clean.split(" ");
