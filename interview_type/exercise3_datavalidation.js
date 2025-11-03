@@ -182,6 +182,11 @@ function processRegistrationData(rawUsers) {
         }
         dataComing.password=password;
 
+
+        if(element.website){
+          normalizeWebsite(element.website);
+        }
+
         /// Sanitization name surname
         element.firstName? dataComing.firstName=normalizeName(element.firstName) : "";
         element.lastName? dataComing.lastName=normalizeName(element.lastName) : "";
@@ -235,6 +240,8 @@ function sanitizePhone(phone) {
 
 function normalizeWebsite(url) {
   // TODO: Ensure URL starts with http:// or https://
+
+  console.log(url);
 }
 function normalizeName(name){
   var clean = name.replace(/[^a-zA-Z\s]/g, "").trim();
