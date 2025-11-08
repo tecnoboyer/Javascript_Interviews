@@ -217,6 +217,7 @@ function processRegistrationData(rawUsers) {
 
         // "FirstName LastName (@username)
         dataComing.displayName = element.firstName+' '+ element.lastName+'('+'@'+dataComing.username+')';
+        dataComing.registrationDate= new Date();
 
        
         usersArray.push(dataComing);
