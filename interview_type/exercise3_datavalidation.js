@@ -206,6 +206,8 @@ function processRegistrationData(rawUsers) {
         element.phoneNumber? dataComing.phoneNumber=element.phoneNumber.replace(/\D/g, ""):'' ;
         const ALLOWED_TYPES = ['personal', 'business']; 
         
+
+        
         // Correct implementation using the ternary operator:
         dataComing.accountType = 
             ALLOWED_TYPES.includes(element.accountType)
@@ -213,6 +215,10 @@ function processRegistrationData(rawUsers) {
                 : 'personal';
 
 
+        // "FirstName LastName (@username)
+        dataComing.displayName = element.firstName+' '+ element.lastName+'('+'@'+dataComing.username+')';
+
+       
         usersArray.push(dataComing);
 
     });
