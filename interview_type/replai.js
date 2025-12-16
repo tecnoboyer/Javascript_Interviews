@@ -3,25 +3,18 @@
 // Assuming that intervals overlap only in the second one,
 // then the previos all times start earlier
 
-const input = [[1,4],[3,7],[9,12],[13,20]]; 
+const input = [[1,4],[3,7],[8,12],[13,20]]; 
 const array=[];
-let min=element[0];
-let max=element[1]; 
+let min=input[0][0];
+let max=input[0][1]; 
 
 input.forEach(element=>{
     // console.dir(element);
-    if (max>element[0]){
-        min=element[0];
-    }
-
-    if(element[1]>max){
-        max=element[1];
-        array.push([min,max])
+    if (max<element[0]){
+        array.push([element[0],element[1]])
     }else {
-        console.log('case');
-        // let overlap =array.pop();
-        // console.dir(overlap);
-        // array.push([min,element[1]])
+        let overlap =array.pop();
+        array.push([min,element[1]]);
     }
     
 }
@@ -29,4 +22,4 @@ input.forEach(element=>{
 
 )
 
-// console.dir(array);
+console.dir(array);
